@@ -6,8 +6,8 @@ public class Player {
     boolean playSplitHand;
     ArrayList<Integer> hand, splitHand;
 
-    public Player(int startingMoney) {
-        money = strartingMoney;
+    public Player(double startingMoney) {
+        money = startingMoney;
     }
 
 }
