@@ -399,9 +399,10 @@ public class PlayerGUI extends javax.swing.JFrame {
                 btnBet.setEnabled(false);
             } else {
                 txtBetInput.setText("Invalid bet, try again!");
-            } catch (Exception e) {
-            txtBetInput.setText("Error");
             }
+        } catch (Exception e) {
+            txtBetInput.setText("Error");
+        }
     }//GEN-LAST:event_btnBetActionPerformed
 
     private void pnlDoubleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlDoubleMouseClicked
