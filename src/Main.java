@@ -27,9 +27,10 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         
         btnRoundStart.setToolTipText("Push to start a new round of the game."); // src: https://docs.oracle.com/javase/tutorial/uiswing/components/tooltip.html
-        btnStart.setToolTipText("Enter the number of players, and then push to start game."); 
+        btnStart.setToolTipText("Enter the number of players, as well as the amount of money you want to start with, and then push to start game."); 
         txtPlayerAmount.setToolTipText("Enter the number of players in this text box.");
         btnExit.setToolTipText("Close program."); 
+        txtStartMoney.setToolTipText("Enter the amount of money you want to start with."); 
         
         arrayCardIcons[0] = new ImageIcon("AC.jpg");  
         arrayCardIcons[1] = new ImageIcon("2C.jpg");
@@ -106,6 +107,7 @@ public class Main extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        txtStartMoney = new javax.swing.JTextField();
         cardP2 = new javax.swing.JPanel();
         Jpanel1 = new javax.swing.JPanel();
         btnRoundStart = new javax.swing.JButton();
@@ -150,6 +152,9 @@ public class Main extends javax.swing.JFrame {
             .addGroup(cardP1Layout.createSequentialGroup()
                 .addGroup(cardP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(cardP1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(cardP1Layout.createSequentialGroup()
                         .addGroup(cardP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(cardP1Layout.createSequentialGroup()
                                 .addContainerGap()
@@ -162,28 +167,37 @@ public class Main extends javax.swing.JFrame {
                                 .addComponent(jLabel5))
                             .addGroup(cardP1Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jLabel7))
-                            .addGroup(cardP1Layout.createSequentialGroup()
-                                .addGap(245, 245, 245)
-                                .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34)
-                                .addComponent(txtPlayerAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 248, Short.MAX_VALUE))
-                    .addGroup(cardP1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(jLabel7)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(cardP1Layout.createSequentialGroup()
+                .addGap(253, 253, 253)
+                .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(cardP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(cardP1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtPlayerAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(cardP1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(txtStartMoney, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(274, Short.MAX_VALUE))
         );
         cardP1Layout.setVerticalGroup(
             cardP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cardP1Layout.createSequentialGroup()
-                .addGap(117, 117, 117)
-                .addGroup(cardP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnStart)
-                    .addComponent(txtPlayerAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGroup(cardP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(cardP1Layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(txtPlayerAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtStartMoney, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                        .addGap(26, 26, 26))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cardP1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnStart)
+                        .addGap(52, 52, 52)))
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 281, Short.MAX_VALUE)
+                .addGap(279, 279, 279)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
@@ -332,11 +346,12 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
-       try {
+        try {
             int numOfPlayers = Integer.parseInt(txtPlayerAmount.getText());
-       
+            int startMoney = Integer.parseInt(txtStartMoney.getText());
+                    
             if (numOfPlayers > 0 && numOfPlayers < 5) { // Only up to 3 players can join a match
-                gameDeck = new Deck(numOfPlayers, 1000); // install Deck and starting money amount 
+                gameDeck = new Deck(numOfPlayers, startMoney); // install Deck and starting money amount 
                 for (int i=0; i<numOfPlayers; i++) { // set the amount of "PlayerGUI" and then add them into the "arrayPlayerGUIs"
                     PlayerGUI pGUI = new PlayerGUI(i, this);
                     arrayPlayerGUIs.add(pGUI);
@@ -354,7 +369,7 @@ public class Main extends javax.swing.JFrame {
             System.out.println("Incorrect Input");
             CardLayout card = (CardLayout)mainPanel.getLayout(); // src: https://stackoverflow.com/questions/21898425/how-to-use-cardlayout-with-netbeans-gui-builder/
             card.show(mainPanel, "cardP1");
-        }
+        }   
     }//GEN-LAST:event_btnStartActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
@@ -512,5 +527,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JTextField txtPlayerAmount;
+    private javax.swing.JTextField txtStartMoney;
     // End of variables declaration//GEN-END:variables
 }
