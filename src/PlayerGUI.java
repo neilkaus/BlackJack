@@ -98,7 +98,7 @@ public class PlayerGUI extends javax.swing.JFrame {
         lblBackGround = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(817, 900));
+        setMinimumSize(new java.awt.Dimension(817, 965));
         getContentPane().setLayout(null);
         getContentPane().add(txtBetInput);
         txtBetInput.setBounds(170, 30, 110, 26);
@@ -337,11 +337,7 @@ public class PlayerGUI extends javax.swing.JFrame {
             pnlCards2.setLayout(new FlowLayout());
             pnlCards2.removeAll();
             blnSplitStatus = false;
-<<<<<<< HEAD
-            
-=======
             lblNetEarning.setVisible(true);
->>>>>>> 01397c56270260c3f52a1a2afac30eefcd3f4a85
             lblNetEarning.setText("Blackjack!");
         }
         // resetting the layout
@@ -408,11 +404,10 @@ public class PlayerGUI extends javax.swing.JFrame {
                 btnBet.setEnabled(false);
             } else {
                 txtBetInput.setText("Invalid bet, try again!");
-           
-        }
-            } catch (Exception e) {
-            txtBetInput.setText("Error");
             }
+        } catch (Exception e) {
+            txtBetInput.setText("Error");
+        }
     }//GEN-LAST:event_btnBetActionPerformed
 
     private void pnlDoubleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlDoubleMouseClicked
@@ -452,17 +447,14 @@ public class PlayerGUI extends javax.swing.JFrame {
             if(blnSplitStatus){
                 if(!player.playSplitHand){//checks if the player has standed or busted the first hand
                     player = mainMenu.gameDeck.hit(intPlayerNum);
-                    pnlCards1.setLayout(new FlowLayout());// src: https://stackoverflow.com/questions/14030124/how-to-dynamically-add-jlabels-to-jpanel
+                    // src: https://stackoverflow.com/questions/14030124/how-to-dynamically-add-jlabels-to-jpanel
                     pnlCards1.removeAll();
-<<<<<<< HEAD
-=======
                     pnlCards1.setLayout(new FlowLayout());
                     
                     // adding the cards in hand 1 to the screen
->>>>>>> 01397c56270260c3f52a1a2afac30eefcd3f4a85
                     for(int i = 0; i<player.hand.size(); i++){
                         JLabel card = new JLabel("");
-                        card.setIcon(mainMenu.arrayCardIcons[player.splitHand.get(i)]);
+                        card.setIcon(mainMenu.arrayCardIcons[player.hand.get(i)]);
                         pnlCards1.add(card);
                     }
                     pnlCards1.validate();
@@ -479,18 +471,14 @@ public class PlayerGUI extends javax.swing.JFrame {
                     player = mainMenu.gameDeck.hit(intPlayerNum);
                     
                     //reseting the layout on the second hand
-                    pnlCards2.setLayout(new FlowLayout());// src: https://stackoverflow.com/questions/14030124/how-to-dynamically-add-jlabels-to-jpanel
+                    // src: https://stackoverflow.com/questions/14030124/how-to-dynamically-add-jlabels-to-jpanel
                     pnlCards2.removeAll();
-<<<<<<< HEAD
-                    for(int i = 0; i<player.hand.size(); i++){
-=======
                     pnlCards2.setLayout(new FlowLayout());
                     
                     // adding the cards in hand 2 to the screen
                     for(int i = 0; i<player.splitHand.size(); i++){
->>>>>>> 01397c56270260c3f52a1a2afac30eefcd3f4a85
                         JLabel card = new JLabel("");
-                        card.setIcon(mainMenu.arrayCardIcons[player.hand.get(i)]);
+                        card.setIcon(mainMenu.arrayCardIcons[player.splitHand.get(i)]);
                         pnlCards2.add(card);
                     }
                     pnlCards2.validate();
@@ -551,24 +539,13 @@ public class PlayerGUI extends javax.swing.JFrame {
             pnlCards2.repaint();
             
             // resets hand 1
-<<<<<<< HEAD
-=======
             pnlCards1.removeAll();
->>>>>>> 01397c56270260c3f52a1a2afac30eefcd3f4a85
             pnlCards1.setLayout(new FlowLayout());
-            pnlCards1.removeAll();
-            pnlCards1.validate();
-            pnlCards1.repaint();
             
-<<<<<<< HEAD
-            card.setIcon(mainMenu.arrayCardIcons[player.hand.get(0)]);
-            pnlCards1.add(card);
-=======
             //puts the card in hand 1 to the screen
             JLabel card2 = new JLabel("");
             card2.setIcon(mainMenu.arrayCardIcons[player.hand.get(0)]);
             pnlCards1.add(card2);
->>>>>>> 01397c56270260c3f52a1a2afac30eefcd3f4a85
             pnlCards1.validate();
             pnlCards1.repaint();
             
