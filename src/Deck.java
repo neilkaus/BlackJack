@@ -186,7 +186,7 @@ public class Deck {
         arrayPlayers.get(playerNum).playSplitHand = true;
     }
 
-    public Dealer finalDealerHand() {
+    public Dealer finalDealer() {
         while(mainDealer.softTotal <= 16) {
             mainDealer.hand.add(arrayDeck[cardToDraw]);
             cardToDraw++;
