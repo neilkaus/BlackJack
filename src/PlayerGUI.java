@@ -135,7 +135,7 @@ public class PlayerGUI extends javax.swing.JFrame {
         );
 
         getContentPane().add(pnlCards1);
-        pnlCards1.setBounds(20, 390, 740, 240);
+        pnlCards1.setBounds(0, 390, 780, 240);
 
         pnlCards2.setOpaque(false);
 
@@ -151,7 +151,7 @@ public class PlayerGUI extends javax.swing.JFrame {
         );
 
         getContentPane().add(pnlCards2);
-        pnlCards2.setBounds(20, 130, 700, 240);
+        pnlCards2.setBounds(0, 130, 740, 240);
 
         txtHardTotal.setEditable(false);
         getContentPane().add(txtHardTotal);
