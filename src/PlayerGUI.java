@@ -390,11 +390,15 @@ public class PlayerGUI extends javax.swing.JFrame {
     }
     private void btnBetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBetActionPerformed
         try{
+            
             // sends the inputed player bet amount to mainMenu.gameDeck
             dblBetAmount = Integer.parseInt(txtBetInput.getText());
-            mainMenu.gameDeck.bet(intPlayerNum, dblBetAmount);
-            mainMenu.setFinishedBet(intPlayerNum);
-            btnBet.setEnabled(false);
+            if(dblBetAmount>0){
+                mainMenu.gameDeck.bet(intPlayerNum, dblBetAmount);
+                mainMenu.setFinishedBet(intPlayerNum);
+                btnBet.setEnabled(false);
+            } else {
+                txtBetInput.setText("Invalid bet, try again!");
             } catch (Exception e) {
             txtBetInput.setText("Error");
             }
