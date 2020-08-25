@@ -305,13 +305,14 @@ public class PlayerGUI extends javax.swing.JFrame {
         blnSplitStatus = false;
         
         setDisableAll();
-        
+        btnBet.setEnabled(true);
         // resetting the layout
         pnlCards1.setLayout(new FlowLayout());
         pnlCards1.removeAll();
         pnlCards2.setLayout(new FlowLayout());
         pnlCards2.removeAll();
-
+        pnlCards1.validate();
+        pnlCards1.repaint();
     }
     
     public void startPlay(){
@@ -519,12 +520,6 @@ public class PlayerGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_pnlStandMouseClicked
 
-    private void lblHitMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHitMouseReleased
-        // sets the button to it's released state
-        if(blnHit){
-            lblHit.setIcon(hit);
-        }
-    }//GEN-LAST:event_lblHitMouseReleased
 
     /**
      * @param args the command line arguments
