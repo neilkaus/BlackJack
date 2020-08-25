@@ -184,7 +184,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(422, Short.MAX_VALUE))
         );
 
-        mainPanel.add(cardP1, "card3");
+        mainPanel.add(cardP1, "cardP1");
 
         cardP2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -253,7 +253,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        mainPanel.add(cardP2, "card4");
+        mainPanel.add(cardP2, "cardP2");
 
         cardP3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -288,7 +288,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(450, Short.MAX_VALUE))
         );
 
-        mainPanel.add(cardP3, "card2");
+        mainPanel.add(cardP3, "cardP3");
 
         btnExit.setText("Exit");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
