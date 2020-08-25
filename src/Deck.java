@@ -133,9 +133,9 @@ public class Deck {
                 mainDealer.hardTotal += 1;
                 mainDealer.oneAceAs11Total += 1;
             } else if (card%13 < 10) {
-                mainDealer.softTotal += card%13;
-                mainDealer.hardTotal += card%13;
-                mainDealer.oneAceAs11Total += card%13;
+                mainDealer.softTotal += (card%13) + 1;
+                mainDealer.hardTotal += (card%13) + 1;
+                mainDealer.oneAceAs11Total += (card%13) + 1;
             } else {
                 mainDealer.softTotal += 10;
                 mainDealer.hardTotal += 10;
@@ -278,11 +278,9 @@ public class Deck {
         } else {
             if(handHighestTotal > 21 ) {
                 arrayPlayers.get(playerNum).winAmount -= arrayPlayers.get(playerNum).betAmount;
-                arrayPlayers.get(playerNum).betAmount *= 0;
             } else if (handHighestTotal == 21 && arrayPlayers.get(playerNum).hand.size() == 2) {
-                arrayPlayers.get(playerNum).winAmount -= arrayPlayers.get(playerNum).betAmount * 1.5;
+                arrayPlayers.get(playerNum).winAmount += arrayPlayers.get(playerNum).betAmount * 1.5;
                 arrayPlayers.get(playerNum).money += arrayPlayers.get(playerNum).betAmount * 2.5;
-                arrayPlayers.get(playerNum).betAmount *= 0;
             } else if(dealerHighestTotal > 21 || handHighestTotal > dealerHighestTotal) {
                 arrayPlayers.get(playerNum).winAmount += arrayPlayers.get(playerNum).betAmount; 
                 arrayPlayers.get(playerNum).betAmount = 0;
@@ -290,7 +288,6 @@ public class Deck {
             } else if(handHighestTotal == dealerHighestTotal) {
                 arrayPlayers.get(playerNum).winAmount += 0; 
                 arrayPlayers.get(playerNum).money += arrayPlayers.get(playerNum).betAmount;
-                arrayPlayers.get(playerNum).betAmount = 0;
             } else {
                 arrayPlayers.get(playerNum).winAmount -= arrayPlayers.get(playerNum).betAmount; 
                 arrayPlayers.get(playerNum).betAmount = 0;
