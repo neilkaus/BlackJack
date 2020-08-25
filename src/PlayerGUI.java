@@ -17,7 +17,7 @@ public class PlayerGUI extends javax.swing.JFrame {
     private final int intPlayerNum;
     
     //importing the image icons for panel-buttons
-    ImageIcon doubleClicked = new ImageIcon("double.png");
+    ImageIcon doubleClicked = new ImageIcon("doubleClicked.png");
     ImageIcon Double = new ImageIcon("double.png");
     ImageIcon hitClicked = new ImageIcon("hitClicked.png");
     ImageIcon hit = new ImageIcon("hit.png");
