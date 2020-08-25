@@ -119,8 +119,8 @@ public class Deck {
     }
 
     private void dealerHandTotal() {
-        mainDealer.softTotal += 0;
-        mainDealer.hardTotal += 0;
+        mainDealer.softTotal = 0;
+        mainDealer.hardTotal = 0;
         boolean ace = false;
         for (int card:mainDealer.hand) {
             if ( card%13 == 0 && !ace) {
@@ -187,15 +187,15 @@ public class Deck {
     }
 
     public Dealer finalDealer() {
-        while(mainDealer.softTotal <= 16) {
+        while(mainDealer.softTotal < 17) {
             mainDealer.hand.add(arrayDeck[cardToDraw]);
             cardToDraw++;
 
             dealerHandTotal();
         }
 
-        if(mainDealer.oneAceAs11Total <= 16 && mainDealer.softTotal > 21) {
-            while(mainDealer.oneAceAs11Total <= 16) {
+        if(mainDealer.oneAceAs11Total < 17 && mainDealer.softTotal > 21) {
+            while(mainDealer.oneAceAs11Total < 17) {
                 mainDealer.hand.add(arrayDeck[cardToDraw]);
                 cardToDraw++;
 
@@ -203,15 +203,15 @@ public class Deck {
             }
         }
 
-        if(mainDealer.hardTotal <= 16 && mainDealer.oneAceAs11Total > 21) {
-            while(mainDealer.hardTotal <= 16) {
+        if(mainDealer.hardTotal < 17 && mainDealer.oneAceAs11Total > 21) {
+            while(mainDealer.hardTotal < 17) {
                 mainDealer.hand.add(arrayDeck[cardToDraw]);
                 cardToDraw++;
 
                 dealerHandTotal();
             }
         }
-
+        System.out.println("dealer soft : " + mainDealer.softTotal + " dealer hard " + mainDealer.hardTotal + " one ace " + mainDealer.oneAceAs11Total);
         return mainDealer;
     }
 
