@@ -17,7 +17,7 @@ public class Main extends javax.swing.JFrame {
     
     boolean[] arrayCheckFinish;
     
-    Deck gameDeck;
+    public Deck gameDeck;
     
     //BeginRound startRound = new BeginRound();
     
@@ -26,6 +26,7 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+        
         
         btnRoundStart.setToolTipText("Push to start a new round of the game."); // src: https://docs.oracle.com/javase/tutorial/uiswing/components/tooltip.html
         //txtDealerPoints1.setToolTipText("This text box displays the total amount of points the dealer has.");
@@ -335,14 +336,15 @@ public class Main extends javax.swing.JFrame {
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
        int numOfPlayers = Integer.parseInt(txtPlayerAmount.getText());
-       System.out.println("fuck me you fucking tards");
+       
+       gameDeck = new Deck(numOfPlayers, 1000);
        for (int i=0; i<numOfPlayers; i++) {
-            PlayerGUI pGUI = new PlayerGUI(gameDeck, i, this);
+            PlayerGUI pGUI = new PlayerGUI(i, this);
             arrayPlayerGUIs.add(pGUI);
         }
 
-        gameDeck = new Deck(numOfPlayers, 1000);
-        System.out.println(gameDeck.getPlayer(0).hardTotal + " fuck");
+
+        
         CardLayout card = (CardLayout) mainPanel.getLayout(); // src: https://stackoverflow.com/questions/21898425/how-to-use-cardlayout-with-netbeans-gui-builder/
         card.show(mainPanel, "cardP2");    
     }//GEN-LAST:event_btnStartActionPerformed
@@ -352,10 +354,26 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnRoundStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRoundStartActionPerformed
+        
+        Jpanel1.removeAll();
+        javax.swing.GroupLayout Jpanel1Layout = new javax.swing.GroupLayout(Jpanel1);
+        Jpanel1.setLayout(Jpanel1Layout);
+        Jpanel1Layout.setHorizontalGroup(
+            Jpanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        Jpanel1Layout.setVerticalGroup(
+            Jpanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 322, Short.MAX_VALUE)
+        );
+        Jpanel1.validate();
+        Jpanel1.repaint();
+    
         arrayCheckFinish = new boolean[arrayPlayerGUIs.size()];
         for (int i=0; i<arrayCheckFinish.length; i++) {
             arrayCheckFinish[i] = false;
         }
+        gameDeck.startRound();
         for (int i=0; i<arrayPlayerGUIs.size(); i++) {
             arrayPlayerGUIs.get(i).startBet();
         }
@@ -369,14 +387,18 @@ public class Main extends javax.swing.JFrame {
         card.show(mainPanel, "cardP3");
     }//GEN-LAST:event_btnEndGameActionPerformed
  
-    public void setFinishedBet() { // src: Neil gave me this code    
+    public void setFinishedBet(int playerNum) { // src: Neil gave me this code    
+        arrayCheckFinish[playerNum] = true;
+        System.out.println(gameDeck.getPlayer(0).hardTotal + "");
         boolean finished = true; 
         for(int i=0; i < arrayCheckFinish.length; i++) {
+            System.out.println(i);
             if (!arrayCheckFinish[i]) {
                 finished = false;
                 break;
             }
         }
+        System.out.print(finished + "");
         if (finished) {
             startPlayRound();
         }     
@@ -384,13 +406,15 @@ public class Main extends javax.swing.JFrame {
     
     public void startPlayRound() { 
         Jpanel1.removeAll();
-     
+        Jpanel1.setLayout(new FlowLayout());
+        
         Dealer dealer = gameDeck.dealDealer();
+        System.out.print(dealer.hand.get(0) + "");
         JLabel cardPic = new JLabel();                       // src: https://stackoverflow.com/questions/14030124/how-to-dynamically-add-jlabels-to-jpanel
         cardPic.setIcon(arrayCardIcons[dealer.hand.get(0)]); // src: Also help from Neil
-            Jpanel1.add(cardPic);                                       
-            Jpanel1.validate();
-            Jpanel1.repaint();
+        Jpanel1.add(cardPic);                                       
+        Jpanel1.validate();
+        Jpanel1.repaint();
         for (int i=0; i<arrayCheckFinish.length; i++) {
             arrayPlayerGUIs.get(i).startPlay();
         }

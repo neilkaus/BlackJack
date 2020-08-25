@@ -38,7 +38,7 @@ public class Deck {
             P.betAmount = 0;
             P.winAmount = 0;
         }
-
+        
         mainDealer.hand = new ArrayList<>();
         mainDealer.softTotal = 0;
         mainDealer.hardTotal = 0;
@@ -81,9 +81,9 @@ public class Deck {
                 arrayPlayers.get(playerNum).hardTotal += 1;
                 arrayPlayers.get(playerNum).oneAceAs11Total += 1;
             } else if (card%13 < 10) {
-                arrayPlayers.get(playerNum).softTotal += card%13;
-                arrayPlayers.get(playerNum).hardTotal += card%13;
-                arrayPlayers.get(playerNum).oneAceAs11Total += card%13;
+                arrayPlayers.get(playerNum).softTotal += (card%13) + 1;
+                arrayPlayers.get(playerNum).hardTotal += (card%13) + 1;
+                arrayPlayers.get(playerNum).oneAceAs11Total += (card%13) + 1;
             } else {
                 arrayPlayers.get(playerNum).softTotal += 10;
                 arrayPlayers.get(playerNum).hardTotal += 10;
@@ -106,9 +106,9 @@ public class Deck {
                     arrayPlayers.get(playerNum).splitHardTotal += 1;
                     arrayPlayers.get(playerNum).splitOneAceAs11Total += 1;
                 } else if (card%13 < 10) {
-                    arrayPlayers.get(playerNum).splitSoftTotal += card%13;
-                    arrayPlayers.get(playerNum).splitHardTotal += card%13;
-                    arrayPlayers.get(playerNum).splitOneAceAs11Total += card%13;
+                    arrayPlayers.get(playerNum).splitSoftTotal += (card%13) + 1;
+                    arrayPlayers.get(playerNum).splitHardTotal += (card%13)+ 1;
+                    arrayPlayers.get(playerNum).splitOneAceAs11Total += (card%13) + 1;
                 } else {
                     arrayPlayers.get(playerNum).splitSoftTotal += 10;
                     arrayPlayers.get(playerNum).splitHardTotal += 10;

@@ -25,6 +25,7 @@ public class PlayerGUI extends javax.swing.JFrame {
     ImageIcon split = new ImageIcon("split.png");
     ImageIcon standClicked = new ImageIcon("standClicked.png");
     ImageIcon stand = new ImageIcon("stand.png");
+    ImageIcon background = new ImageIcon("table.jpg");
     
     //whether the stand double hit split panel-buttons are active
     boolean blnStand;
@@ -32,17 +33,15 @@ public class PlayerGUI extends javax.swing.JFrame {
     boolean blnHit;
     boolean blnDouble;
     
-    Deck gameDeck;
     Main mainMenu;
     /**
      * Creates new form PlayerGUI
-     * @param _gameDeck
      * @param playerNum
      * @param _mainMenu
      */
-    public PlayerGUI(Deck _gameDeck, int playerNum, Main _mainMenu) {
+    public PlayerGUI(int playerNum, Main _mainMenu) {
         initComponents();
-        gameDeck = _gameDeck;
+ 
         mainMenu = _mainMenu;
         //set the status of all panel-buttons to inactive, and the their icons to pressed
         blnDouble = false;
@@ -53,6 +52,8 @@ public class PlayerGUI extends javax.swing.JFrame {
         lblSplit.setIcon(splitClicked);
         blnStand = false;
         lblStand.setIcon(standClicked);
+        btnBet.setEnabled(false);
+        txtBetInput.setEditable(false);
         
         intPlayerNum = playerNum;// the number assigned by the main to this player
  
@@ -167,7 +168,7 @@ public class PlayerGUI extends javax.swing.JFrame {
             }
         });
 
-        lblDouble.setIcon(Double); // NOI18N
+        lblDouble.setIcon(doubleClicked); // NOI18N
 
         javax.swing.GroupLayout pnlDoubleLayout = new javax.swing.GroupLayout(pnlDouble);
         pnlDouble.setLayout(pnlDoubleLayout);
@@ -249,7 +250,7 @@ public class PlayerGUI extends javax.swing.JFrame {
         });
 
         lblHit.setIcon(hit); // NOI18N
-        lblHit.addMouseListener(new java.awt.event.MouseAdapter() {
+        pnlHit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 lblHitMouseReleased(evt);
             }
@@ -290,7 +291,7 @@ public class PlayerGUI extends javax.swing.JFrame {
         getContentPane().add(pnlTaskBar);
         pnlTaskBar.setBounds(0, 720, 820, 180);
 
-        lblBackGround.setIcon(hit); // NOI18N
+        lblBackGround.setIcon(background); // NOI18N
         getContentPane().add(lblBackGround);
         lblBackGround.setBounds(0, 0, 820, 900);
         setVisible(true);
@@ -305,13 +306,30 @@ public class PlayerGUI extends javax.swing.JFrame {
     
     public void startPlay(){
         // calling on game deck to deal this player cards
-        Player player = gameDeck.deal(intPlayerNum);
-        
+        Player player = mainMenu.gameDeck.deal(intPlayerNum);
+        blnStand = true;
+        lblStand.setIcon(stand);
+        blnHit = true;
+        lblHit.setIcon(hit);
+        blnDouble = true;
+        lblDouble.setIcon(Double);
         // if the player hits a blackjack
         if(player.softTotal == 21){
             setDisableAll();
             mainMenu.setFinishedPlay(intPlayerNum);
         }
+        // resetting the layout
+            pnlCards1.setLayout(new FlowLayout());
+            pnlCards1.removeAll();
+            
+            // printing the cards in hand onto the screen
+            for(int i = 0; i<player.hand.size(); i++){
+                JLabel card = new JLabel("");
+                card.setIcon(mainMenu.arrayCardIcons[player.hand.get(i)]);
+                pnlCards1.add(card);
+            }
+            pnlCards1.validate();
+            pnlCards1.repaint();
         
         // outputing all the player's scores
         txtHardTotal.setText(player.hardTotal + "Points");
@@ -340,7 +358,7 @@ public class PlayerGUI extends javax.swing.JFrame {
     
     // tells the player how much they won or lost
     public void getPayout(){
-        Player player = gameDeck.getPlayer(intPlayerNum);
+        Player player = mainMenu.gameDeck.getPlayer(intPlayerNum);
         lblNetEarning.setVisible(true);
         
         // seeing if the player won or lost, which determines whether they win their bet amount or lose it.
@@ -353,15 +371,16 @@ public class PlayerGUI extends javax.swing.JFrame {
         }
     }
     private void btnBetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBetActionPerformed
-        // sends the inputed player bet amount to gameDeck
+        // sends the inputed player bet amount to mainMenu.gameDeck
         dblBetAmount = Integer.parseInt(txtBetInput.getText());
-        gameDeck.bet(intPlayerNum, dblBetAmount);
+        mainMenu.gameDeck.bet(intPlayerNum, dblBetAmount);
+        mainMenu.setFinishedBet(intPlayerNum);
     }//GEN-LAST:event_btnBetActionPerformed
 
     private void pnlDoubleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlDoubleMouseClicked
         // checks if the double button is active
         if(blnDouble){
-            Player player = gameDeck.doubleDown(intPlayerNum);// calling the doubleDown function from gameDeck
+            Player player = mainMenu.gameDeck.doubleDown(intPlayerNum);// calling the doubleDown function from mainMenu.gameDeck
             
             // resetting the layout
             pnlCards1.setLayout(new FlowLayout());
@@ -370,7 +389,7 @@ public class PlayerGUI extends javax.swing.JFrame {
             // printing the cards in hand onto the screen
             for(int i = 0; i<player.hand.size(); i++){
                 JLabel card = new JLabel("");
-                card.setIcon(mainMenu.arrayCardIcons[i]);
+                card.setIcon(mainMenu.arrayCardIcons[player.hand.get(i)]);
                 pnlCards1.add(card);
             }
             pnlCards1.validate();
@@ -385,12 +404,12 @@ public class PlayerGUI extends javax.swing.JFrame {
     private void pnlHitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlHitMouseClicked
         // checks if the hit button is active
         if(blnHit){
-            Player player = gameDeck.getPlayer(intPlayerNum);
+            Player player = mainMenu.gameDeck.getPlayer(intPlayerNum);
             
             // checks if the player has split yet
             if(blnSplitStatus){
                 if(!player.playSplitHand){//checks if the player has standed or busted the first hand
-                    player = gameDeck.hit(intPlayerNum);
+                    player = mainMenu.gameDeck.hit(intPlayerNum);
                     pnlCards1.setLayout(new FlowLayout());// src: https://stackoverflow.com/questions/14030124/how-to-dynamically-add-jlabels-to-jpanel
                     pnlCards1.removeAll();
                     for(int i = 0; i<player.hand.size(); i++){
@@ -401,7 +420,7 @@ public class PlayerGUI extends javax.swing.JFrame {
                     pnlCards1.validate();
                     pnlCards1.repaint();
                 } else {
-                    player = gameDeck.hit(intPlayerNum);
+                    player = mainMenu.gameDeck.hit(intPlayerNum);
                     
                     //reseting the layout on the second hand
                     pnlCards2.setLayout(new FlowLayout());// src: https://stackoverflow.com/questions/14030124/how-to-dynamically-add-jlabels-to-jpanel
@@ -415,12 +434,12 @@ public class PlayerGUI extends javax.swing.JFrame {
                     pnlCards2.repaint();
                 }
             } else {// if the player hasn't split
-                player = gameDeck.hit(intPlayerNum);
-                pnlCards1.setLayout(new FlowLayout());// src: https://stackoverflow.com/questions/14030124/how-to-dynamically-add-jlabels-to-jpanel
+                player = mainMenu.gameDeck.hit(intPlayerNum);
+                // src: https://stackoverflow.com/questions/14030124/how-to-dynamically-add-jlabels-to-jpanel
                 pnlCards1.removeAll();
                 for(int i = 0; i<player.hand.size(); i++){
                     JLabel card = new JLabel("");
-                    card.setIcon(mainMenu.arrayCardIcons[i]);
+                    card.setIcon(mainMenu.arrayCardIcons[player.hand.get(i)]);
                     pnlCards1.add(card);
                 }
                 pnlCards1.validate();
@@ -441,7 +460,7 @@ public class PlayerGUI extends javax.swing.JFrame {
     private void pnlSplitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSplitMouseClicked
         // determines if the split button is active
         if(blnSplit){
-            Player player = gameDeck.split(intPlayerNum);
+            Player player = mainMenu.gameDeck.split(intPlayerNum);
             blnSplitStatus = true;
             JLabel card = new JLabel("");
             card.setIcon(mainMenu.arrayCardIcons[player.splitHand.get(0)]);
@@ -459,10 +478,10 @@ public class PlayerGUI extends javax.swing.JFrame {
     private void pnlStandMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlStandMouseClicked
         // when the user clicks stand
         if(blnStand){// determines if the button is active
-            Player player = gameDeck.getPlayer(intPlayerNum);
+            Player player = mainMenu.gameDeck.getPlayer(intPlayerNum);
             if (blnSplitStatus) {
                 if(!player.playSplitHand){
-                    gameDeck.standSplitHand(intPlayerNum);
+                    mainMenu.gameDeck.standSplitHand(intPlayerNum);
                 } else {
                     mainMenu.setFinishedPlay(intPlayerNum);
                     setDisableAll();
