@@ -460,6 +460,10 @@ public class PlayerGUI extends javax.swing.JFrame {
                     pnlCards1.validate();
                     pnlCards1.repaint();
                     
+                    // checks if hand 1 busted
+                    if(player.hardTotal>21){
+                       mainMenu.gameDeck.standSplitHand(intPlayerNum);
+                    }
                     // updating totals
                     txtHardTotal.setText("Hard total: " + player.hardTotal + " Points");
                     txtSoftTotal.setText("Soft total: " + player.softTotal + " Points");
@@ -479,6 +483,14 @@ public class PlayerGUI extends javax.swing.JFrame {
                     }
                     pnlCards2.validate();
                     pnlCards2.repaint();
+                    
+                    // checks if hand 2 busted
+                    if(player.splitHardTotal>21){
+                        setDisableAll();
+                        mainMenu.setFinishedPlay(intPlayerNum);
+                        lblNetEarning.setVisible(true);
+                        lblNetEarning.setText("Busted!");
+                    }
                 }
             } else {// if the player hasn't split
                 player = mainMenu.gameDeck.hit(intPlayerNum);
@@ -499,7 +511,7 @@ public class PlayerGUI extends javax.swing.JFrame {
                     setDisableAll();
                     mainMenu.setFinishedPlay(intPlayerNum);
                     lblNetEarning.setVisible(true);
-                    lblNetEarning.setText("Busted!")
+                    lblNetEarning.setText("Busted!");
                 }
                 blnDouble = false;
                 lblDouble.setIcon(doubleClicked);
