@@ -1,3 +1,12 @@
+/**
+* class to manage deck of cards as an array of integers, an ArrayList of Player objects for player information
+* and a Dealer object for the dealer also writes an xml file of a log of rounds of the game
+*
+* date     20200824
+* @author neil
+* @version 1.0
+* @see    Assignment 4.3
+*/
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,6 +34,7 @@ public class Deck {
 
     public Deck(int numPlayers, double startingMoney) {
         try {
+            //create new log file
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             Document doc = db.newDocument();
@@ -33,6 +43,7 @@ public class Deck {
             game.setAttribute("startingMoney", startingMoney + "");
             doc.appendChild(game);
 
+            //write the xml file src:https://www.programmergate.com/how-to-create-xml-file-in-java/
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
@@ -53,6 +64,7 @@ public class Deck {
     }
 
     public void startRound() {
+        //reset everything except player money on round start
         cardToDraw = 0;
 
         for(int i = 0; i < 51; i++) {
@@ -107,6 +119,7 @@ public class Deck {
     }
 
     private void playerHandTotal(int playerNum) {
+        //keep different hand totals because of two possible ace values
         arrayPlayers.get(playerNum).softTotal = 0;
         arrayPlayers.get(playerNum).hardTotal = 0;
         arrayPlayers.get(playerNum).oneAceAs11Total = 0;
@@ -133,10 +146,11 @@ public class Deck {
         }
 
         if(!arrayPlayers.get(playerNum).splitHand.isEmpty()) {
-            ace = false;
             arrayPlayers.get(playerNum).splitSoftTotal = 0;
             arrayPlayers.get(playerNum).splitHardTotal = 0;
             arrayPlayers.get(playerNum).splitOneAceAs11Total = 0;
+            
+            ace = false;
             for (int card:arrayPlayers.get(playerNum).splitHand) {
                 if ( card%13 == 0 && !ace) {
                     arrayPlayers.get(playerNum).splitSoftTotal += 11;
@@ -161,6 +175,7 @@ public class Deck {
     }
 
     private void dealerHandTotal() {
+        //keep two hand totals because of two possible ace values
         mainDealer.softTotal = 0;
         mainDealer.hardTotal = 0;
         mainDealer.oneAceAs11Total = 0;
@@ -232,6 +247,7 @@ public class Deck {
     }
 
     public Dealer finalDealer() {
+        //succesive loops required due to ace having two possible values
         while(mainDealer.softTotal < 17) {
             mainDealer.hand.add(arrayDeck[cardToDraw]);
             cardToDraw++;
@@ -270,6 +286,7 @@ public class Deck {
     public Player payout(int playerNum) {
         int dealerHighestTotal, handHighestTotal, splitHandHighestTotal;
 
+        //find the highest card value that doesn't bust (except for if hardTotal busts which is the lowest possible value)
         if(mainDealer.softTotal <= 21) {
             dealerHighestTotal = mainDealer.softTotal;
         } else if (mainDealer.oneAceAs11Total <= 21) {
@@ -288,6 +305,7 @@ public class Deck {
         
 
         if (!arrayPlayers.get(playerNum).splitHand.isEmpty()) {
+            //check for payout with split
             if(arrayPlayers.get(playerNum).splitSoftTotal <= 21) {
                 splitHandHighestTotal = arrayPlayers.get(playerNum).splitSoftTotal;
             } else if (arrayPlayers.get(playerNum).splitOneAceAs11Total <= 21) {
@@ -321,6 +339,7 @@ public class Deck {
             }
             System.out.println(" win amount " + arrayPlayers.get(playerNum).winAmount);
         } else {
+            //check for payout if no split
             if(handHighestTotal > 21 ) {
                 arrayPlayers.get(playerNum).winAmount -= arrayPlayers.get(playerNum).betAmount;
             } else if (handHighestTotal == 21 && arrayPlayers.get(playerNum).hand.size() == 2) {
@@ -345,6 +364,7 @@ public class Deck {
     }
     public void endRound() {
          try {
+            //read previously saved log file and add to it
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             Document doc = db.parse(new File("BlackJackLog.xml"));
@@ -393,7 +413,7 @@ public class Deck {
             
             game.appendChild(round);
             
-            //write the content into xml file
+            //write the content into xml file src:https://www.programmergate.com/how-to-create-xml-file-in-java/
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
