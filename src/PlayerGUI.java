@@ -387,11 +387,15 @@ public class PlayerGUI extends javax.swing.JFrame {
         }
     }
     private void btnBetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBetActionPerformed
-        // sends the inputed player bet amount to mainMenu.gameDeck
-        dblBetAmount = Integer.parseInt(txtBetInput.getText());
-        mainMenu.gameDeck.bet(intPlayerNum, dblBetAmount);
-        mainMenu.setFinishedBet(intPlayerNum);
-        btnBet.setEnabled(false);
+        try{
+            // sends the inputed player bet amount to mainMenu.gameDeck
+            dblBetAmount = Integer.parseInt(txtBetInput.getText());
+            mainMenu.gameDeck.bet(intPlayerNum, dblBetAmount);
+            mainMenu.setFinishedBet(intPlayerNum);
+            btnBet.setEnabled(false);
+            } catch (Exception e) {
+            txtBetInput.setText("Error");
+            }
     }//GEN-LAST:event_btnBetActionPerformed
 
     private void pnlDoubleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlDoubleMouseClicked
