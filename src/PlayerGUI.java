@@ -250,11 +250,7 @@ public class PlayerGUI extends javax.swing.JFrame {
         });
 
         lblHit.setIcon(hit); // NOI18N
-        pnlHit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                lblHitMouseReleased(evt);
-            }
-        });
+        
 
         javax.swing.GroupLayout pnlHitLayout = new javax.swing.GroupLayout(pnlHit);
         pnlHit.setLayout(pnlHitLayout);
