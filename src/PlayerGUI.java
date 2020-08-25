@@ -515,7 +515,7 @@ public class PlayerGUI extends javax.swing.JFrame {
             blnSplit = false;
             lblSplit.setIcon(splitClicked);
             blnDouble = false;
-            lblSplit.setIcon(doubleClicked);
+            lblDouble.setIcon(doubleClicked);
         }
     }//GEN-LAST:event_pnlSplitMouseClicked
 
