@@ -2,6 +2,7 @@
 import java.awt.FlowLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import mainMenu.*;
 
 /*
  * Programmer:  Andrew Wang (with some verbal assistance from Neil)
@@ -36,6 +37,9 @@ public class PlayerGUI extends javax.swing.JFrame {
     Main mainMenu;
     /**
      * Creates new form PlayerGUI
+     * @param _gameDeck
+     * @param playerNum
+     * @param _mainMenu
      */
     public PlayerGUI(Deck _gameDeck, int playerNum, Main _mainMenu) {
         gameDeck = _gameDeck;
@@ -315,8 +319,8 @@ public class PlayerGUI extends javax.swing.JFrame {
         }
         
         // outputing all the player's scores
-        txtHardTotal.setText(player.hardTotal);
-        txtSoftTotal.setText(player.softTotal);
+        txtHardTotal.setText(player.hardTotal + "Points");
+        txtSoftTotal.setText(player.softTotal + "Points");
         txtPlayerMoney.setText(""+player.money);
         
         // if the player has two of the same card, it enables spliting
@@ -355,7 +359,7 @@ public class PlayerGUI extends javax.swing.JFrame {
     }
     private void btnBetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBetActionPerformed
         // sends the inputed player bet amount to gameDeck
-        dblBetAmount = Double.parseDouble(txtBetInput.getText());
+        dblBetAmount = Integer.parseInt(txtBetInput.getText());
         gameDeck.bet(intPlayerNum, dblBetAmount);
     }//GEN-LAST:event_btnBetActionPerformed
 
@@ -416,7 +420,7 @@ public class PlayerGUI extends javax.swing.JFrame {
                     pnlCards2.repaint();
                 }
             } else {// if the player hasn't split
-                Player player = gameDeck.hit(intPlayerNum);
+                player = gameDeck.hit(intPlayerNum);
                 pnlCards1.setLayout(new FlowLayout());// src: https://stackoverflow.com/questions/14030124/how-to-dynamically-add-jlabels-to-jpanel
                 pnlCards1.removeAll();
                 for(int i = 0; i<player.hand.size(); i++){
@@ -432,7 +436,6 @@ public class PlayerGUI extends javax.swing.JFrame {
                 }
                 blnDouble = false;
                 lblDouble.setIcon(doubleClicked);
-                blnHit = false;
                 lblHit.setIcon(hitClicked);
                 blnSplit = false;
                 lblSplit.setIcon(splitClicked);
@@ -444,8 +447,6 @@ public class PlayerGUI extends javax.swing.JFrame {
         // determines if the split button is active
         if(blnSplit){
             Player player = gameDeck.split(intPlayerNum);
-            btnSplit.setEnabled(false);
-            btnDouble.setEnabled(false);
             blnSplitStatus = true;
             JLabel card = new JLabel("");
             card.setIcon(mainMenu.arrayCardIcons[player.splitHand.get(0)]);
