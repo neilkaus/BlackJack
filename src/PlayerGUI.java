@@ -309,6 +309,8 @@ public class PlayerGUI extends javax.swing.JFrame {
         pnlCards2.removeAll();
         pnlCards1.validate();
         pnlCards1.repaint();
+        pnlCards2.validate();
+        pnlCards2.repaint();
         txtHardTotal.setText("");
         txtSoftTotal.setText("");
         lblNetEarning.setText("");
@@ -493,7 +495,13 @@ public class PlayerGUI extends javax.swing.JFrame {
             pnlCards2.add(card);
             pnlCards2.validate();
             pnlCards2.repaint();
-
+            
+            // resets hand 1
+            pnlCards1.setLayout(new FlowLayout());
+            pnlCards1.removeAll();
+            pnlCards1.validate();
+            pnlCards1.repaint();
+            
             card.setIcon(mainMenu.arrayCardIcons[player.hand.get(0)]);
             pnlCards1.add(card);
             pnlCards1.validate();
