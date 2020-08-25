@@ -467,7 +467,6 @@ public class PlayerGUI extends javax.swing.JFrame {
                 }
                 blnDouble = false;
                 lblDouble.setIcon(doubleClicked);
-                lblHit.setIcon(hitClicked);
                 blnSplit = false;
                 lblSplit.setIcon(splitClicked);
                 
