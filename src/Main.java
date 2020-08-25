@@ -98,14 +98,6 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         mainPanel = new javax.swing.JPanel();
-        cardP2 = new javax.swing.JPanel();
-        Jpanel1 = new javax.swing.JPanel();
-        btnRoundStart = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        btnEndGame = new javax.swing.JButton();
-        cardP3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         cardP1 = new javax.swing.JPanel();
         txtPlayerAmount = new javax.swing.JTextField();
         btnStart = new javax.swing.JButton();
@@ -114,11 +106,85 @@ public class Main extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        cardP2 = new javax.swing.JPanel();
+        Jpanel1 = new javax.swing.JPanel();
+        btnRoundStart = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        btnEndGame = new javax.swing.JButton();
+        cardP3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         btnExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         mainPanel.setLayout(new java.awt.CardLayout());
+
+        cardP1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        btnStart.setText("Start Game");
+        btnStart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStartActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Power Red and Green", 3, 48)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(153, 0, 255));
+        jLabel6.setText("Blackjack");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setText("Group 6");
+
+        jLabel4.setText("Neil Kaus");
+
+        jLabel5.setText("Andrew Wang");
+
+        jLabel7.setText("Ethan Tsang");
+
+        javax.swing.GroupLayout cardP1Layout = new javax.swing.GroupLayout(cardP1);
+        cardP1.setLayout(cardP1Layout);
+        cardP1Layout.setHorizontalGroup(
+            cardP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cardP1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(cardP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 232, Short.MAX_VALUE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(210, 210, 210))
+            .addGroup(cardP1Layout.createSequentialGroup()
+                .addGap(249, 249, 249)
+                .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(txtPlayerAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        cardP1Layout.setVerticalGroup(
+            cardP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cardP1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(cardP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(cardP1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel7))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(76, 76, 76)
+                .addGroup(cardP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnStart)
+                    .addComponent(txtPlayerAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(422, Short.MAX_VALUE))
+        );
+
+        mainPanel.add(cardP1, "card3");
 
         cardP2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -224,72 +290,6 @@ public class Main extends javax.swing.JFrame {
 
         mainPanel.add(cardP3, "card2");
 
-        cardP1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        btnStart.setText("Start Game");
-        btnStart.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnStartActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setFont(new java.awt.Font("Power Red and Green", 3, 48)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(153, 0, 255));
-        jLabel6.setText("Blackjack");
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setText("Group 6");
-
-        jLabel4.setText("Neil Kaus");
-
-        jLabel5.setText("Andrew Wang");
-
-        jLabel7.setText("Ethan Tsang");
-
-        javax.swing.GroupLayout cardP1Layout = new javax.swing.GroupLayout(cardP1);
-        cardP1.setLayout(cardP1Layout);
-        cardP1Layout.setHorizontalGroup(
-            cardP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cardP1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(cardP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 232, Short.MAX_VALUE)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(210, 210, 210))
-            .addGroup(cardP1Layout.createSequentialGroup()
-                .addGap(249, 249, 249)
-                .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(txtPlayerAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        cardP1Layout.setVerticalGroup(
-            cardP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(cardP1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(cardP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(cardP1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel7))
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(76, 76, 76)
-                .addGroup(cardP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnStart)
-                    .addComponent(txtPlayerAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(422, Short.MAX_VALUE))
-        );
-
-        mainPanel.add(cardP1, "card3");
-
         btnExit.setText("Exit");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -375,7 +375,7 @@ public class Main extends javax.swing.JFrame {
         card.show(mainPanel, "cardP3");
     }//GEN-LAST:event_btnEndGameActionPerformed
  
-    public void setFinishedBet() { // src: Neil gave me this code    
+    public void setFinishedBet(int playerNum) { // src: Neil gave me this code    
         arrayCheckFinish[playerNum] = true;
         boolean finished = true; 
         for(int i=0; i < arrayCheckFinish.length; i++) { // check if all of "arrayCheckFinish" is true. If not, then break
