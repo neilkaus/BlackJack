@@ -58,13 +58,14 @@ public class PlayerGUI extends javax.swing.JFrame {
         intPlayerNum = playerNum;// the number assigned by the main to this player
  
 
-        lblNetEarning.setVisible(false);
+        lblNetEarning.setVisible(true);
         
         //tool tips for each of the buttons
         pnlStand.setToolTipText("Holds your total and ends your turn");
         pnlSplit.setToolTipText("Can be done when you have two of the same card, the pair is split into two hands,\n each new hand is worth the original bet, meaning your total bet is doubled");
         pnlHit.setToolTipText("Get another card");
         pnlDouble.setToolTipText("Your bet is doubled, take one more card, and ends your turn");
+        btnBet.setToolTipText("Click to input your bet!");
     }
 
     /**
@@ -302,6 +303,7 @@ public class PlayerGUI extends javax.swing.JFrame {
         
         setDisableAll();
         btnBet.setEnabled(true);
+        
         // resetting the layout
         pnlCards1.setLayout(new FlowLayout());
         pnlCards1.removeAll();
@@ -325,6 +327,7 @@ public class PlayerGUI extends javax.swing.JFrame {
         lblHit.setIcon(hit);
         blnDouble = true;
         lblDouble.setIcon(Double);
+        
         // if the player hits a blackjack
         if(player.softTotal == 21){
             setDisableAll();
@@ -393,6 +396,8 @@ public class PlayerGUI extends javax.swing.JFrame {
             Player player = mainMenu.gameDeck.getPlayer(intPlayerNum);
             // sends the inputed player bet amount to mainMenu.gameDeck
             dblBetAmount = Integer.parseInt(txtBetInput.getText());
+            
+            // ensuring the inputed bet is valid
             if(dblBetAmount>0 && dblBetAmount<player.money){
                 mainMenu.gameDeck.bet(intPlayerNum, dblBetAmount);
                 mainMenu.setFinishedBet(intPlayerNum);
@@ -445,6 +450,8 @@ public class PlayerGUI extends javax.swing.JFrame {
                     // src: https://stackoverflow.com/questions/14030124/how-to-dynamically-add-jlabels-to-jpanel
                     pnlCards1.removeAll();
                     pnlCards1.setLayout(new FlowLayout());
+                    
+                    // adding the cards in hand 1 to the screen
                     for(int i = 0; i<player.hand.size(); i++){
                         JLabel card = new JLabel("");
                         card.setIcon(mainMenu.arrayCardIcons[player.hand.get(i)]);
@@ -463,6 +470,8 @@ public class PlayerGUI extends javax.swing.JFrame {
                     // src: https://stackoverflow.com/questions/14030124/how-to-dynamically-add-jlabels-to-jpanel
                     pnlCards2.removeAll();
                     pnlCards2.setLayout(new FlowLayout());
+                    
+                    // adding the cards in hand 2 to the screen
                     for(int i = 0; i<player.splitHand.size(); i++){
                         JLabel card = new JLabel("");
                         card.setIcon(mainMenu.arrayCardIcons[player.splitHand.get(i)]);
@@ -475,6 +484,8 @@ public class PlayerGUI extends javax.swing.JFrame {
                 player = mainMenu.gameDeck.hit(intPlayerNum);
                 // src: https://stackoverflow.com/questions/14030124/how-to-dynamically-add-jlabels-to-jpanel
                 pnlCards1.removeAll();
+                
+                //puts the cards in hand to the screen
                 for(int i = 0; i<player.hand.size(); i++){
                     JLabel card = new JLabel("");
                     card.setIcon(mainMenu.arrayCardIcons[player.hand.get(i)]);
@@ -482,6 +493,8 @@ public class PlayerGUI extends javax.swing.JFrame {
                 }
                 pnlCards1.validate();
                 pnlCards1.repaint();
+                
+                // checks if the player busted
                 if(player.hardTotal>21){
                     setDisableAll();
                     mainMenu.setFinishedPlay(intPlayerNum);
@@ -505,6 +518,8 @@ public class PlayerGUI extends javax.swing.JFrame {
         if(blnSplit){
             Player player = mainMenu.gameDeck.split(intPlayerNum);
             blnSplitStatus = true;
+            
+            //adds one of the cards to hand 2
             JLabel card = new JLabel("");
             card.setIcon(mainMenu.arrayCardIcons[player.splitHand.get(0)]);
             pnlCards2.add(card);
@@ -512,10 +527,10 @@ public class PlayerGUI extends javax.swing.JFrame {
             pnlCards2.repaint();
             
             // resets hand 1
-
             pnlCards1.removeAll();
             pnlCards1.setLayout(new FlowLayout());
             
+            //puts the card in hand 1 to the screen
             JLabel card2 = new JLabel("");
             card2.setIcon(mainMenu.arrayCardIcons[player.hand.get(0)]);
             pnlCards1.add(card2);
