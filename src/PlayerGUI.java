@@ -309,6 +309,8 @@ public class PlayerGUI extends javax.swing.JFrame {
         pnlCards2.removeAll();
         pnlCards1.validate();
         pnlCards1.repaint();
+        pnlCards2.validate();
+        pnlCards2.repaint();
         txtHardTotal.setText("");
         txtSoftTotal.setText("");
         lblNetEarning.setText("");
@@ -385,11 +387,15 @@ public class PlayerGUI extends javax.swing.JFrame {
         }
     }
     private void btnBetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBetActionPerformed
-        // sends the inputed player bet amount to mainMenu.gameDeck
-        dblBetAmount = Integer.parseInt(txtBetInput.getText());
-        mainMenu.gameDeck.bet(intPlayerNum, dblBetAmount);
-        mainMenu.setFinishedBet(intPlayerNum);
-        btnBet.setEnabled(false);
+        try{
+            // sends the inputed player bet amount to mainMenu.gameDeck
+            dblBetAmount = Integer.parseInt(txtBetInput.getText());
+            mainMenu.gameDeck.bet(intPlayerNum, dblBetAmount);
+            mainMenu.setFinishedBet(intPlayerNum);
+            btnBet.setEnabled(false);
+            } catch (Exception e) {
+            txtBetInput.setText("Error");
+            }
     }//GEN-LAST:event_btnBetActionPerformed
 
     private void pnlDoubleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlDoubleMouseClicked
@@ -493,7 +499,13 @@ public class PlayerGUI extends javax.swing.JFrame {
             pnlCards2.add(card);
             pnlCards2.validate();
             pnlCards2.repaint();
-
+            
+            // resets hand 1
+            pnlCards1.setLayout(new FlowLayout());
+            pnlCards1.removeAll();
+            pnlCards1.validate();
+            pnlCards1.repaint();
+            
             card.setIcon(mainMenu.arrayCardIcons[player.hand.get(0)]);
             pnlCards1.add(card);
             pnlCards1.validate();
