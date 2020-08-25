@@ -11,7 +11,6 @@ import java.util.*;
  * @author etsan
  */
 public class Main extends javax.swing.JFrame {
-    static Main mainMenu;
     ImageIcon[] arrayCardIcons = new ImageIcon[52]; // "arrayCardIcons" array contains the playing card .jpg images
     
     ArrayList <PlayerGUI> arrayPlayerGUIs = new ArrayList <>(); 
@@ -192,7 +191,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(513, Short.MAX_VALUE))
         );
 
-        mainPanel.add(cardP1, "card3");
+        mainPanel.add(cardP1, "cardP1");
 
         cardP2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -264,7 +263,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        mainPanel.add(cardP2, "card4");
+        mainPanel.add(cardP2, "cardP2");
 
         cardP3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -299,7 +298,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(450, Short.MAX_VALUE))
         );
 
-        mainPanel.add(cardP3, "card2");
+        mainPanel.add(cardP3, "cardP3");
 
         btnExit.setText("Exit");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
@@ -336,15 +335,15 @@ public class Main extends javax.swing.JFrame {
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
        int numOfPlayers = Integer.parseInt(txtPlayerAmount.getText());
-
-        for (int i=0; i<numOfPlayers; i++) {
-            PlayerGUI pGUI = new PlayerGUI(gameDeck, i, mainMenu);
+       System.out.println("fuck me you fucking tards");
+       for (int i=0; i<numOfPlayers; i++) {
+            PlayerGUI pGUI = new PlayerGUI(gameDeck, i, this);
             arrayPlayerGUIs.add(pGUI);
         }
-        
+
         gameDeck = new Deck(numOfPlayers, 1000);
-        
-        CardLayout card = (CardLayout)mainPanel.getLayout(); // src: https://stackoverflow.com/questions/21898425/how-to-use-cardlayout-with-netbeans-gui-builder/
+        System.out.println(gameDeck.getPlayer(0).hardTotal + " fuck");
+        CardLayout card = (CardLayout) mainPanel.getLayout(); // src: https://stackoverflow.com/questions/21898425/how-to-use-cardlayout-with-netbeans-gui-builder/
         card.show(mainPanel, "cardP2");    
     }//GEN-LAST:event_btnStartActionPerformed
 
@@ -457,7 +456,7 @@ public class Main extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        mainMenu = new Main();
+        Main mainMenu = new Main();
         mainMenu.setVisible(true);
     }
 

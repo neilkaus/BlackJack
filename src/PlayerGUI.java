@@ -41,9 +41,10 @@ public class PlayerGUI extends javax.swing.JFrame {
      * @param _mainMenu
      */
     public PlayerGUI(Deck _gameDeck, int playerNum, Main _mainMenu) {
+        initComponents();
         gameDeck = _gameDeck;
         mainMenu = _mainMenu;
-        // set the status of all panel-buttons to inactive, and the their icons to pressed
+        //set the status of all panel-buttons to inactive, and the their icons to pressed
         blnDouble = false;
         lblDouble.setIcon(doubleClicked);
         blnHit = false;
@@ -54,7 +55,7 @@ public class PlayerGUI extends javax.swing.JFrame {
         lblStand.setIcon(standClicked);
         
         intPlayerNum = playerNum;// the number assigned by the main to this player
-        initComponents();
+ 
 
         lblNetEarning.setVisible(false);
         
@@ -166,7 +167,7 @@ public class PlayerGUI extends javax.swing.JFrame {
             }
         });
 
-        lblDouble.setIcon(new javax.swing.ImageIcon(getClass().getResource("/double.png"))); // NOI18N
+        lblDouble.setIcon(Double); // NOI18N
 
         javax.swing.GroupLayout pnlDoubleLayout = new javax.swing.GroupLayout(pnlDouble);
         pnlDouble.setLayout(pnlDoubleLayout);
@@ -189,7 +190,7 @@ public class PlayerGUI extends javax.swing.JFrame {
             }
         });
 
-        lblStand.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stand.png"))); // NOI18N
+        lblStand.setIcon(stand); // NOI18N
 
         javax.swing.GroupLayout pnlStandLayout = new javax.swing.GroupLayout(pnlStand);
         pnlStand.setLayout(pnlStandLayout);
@@ -214,7 +215,7 @@ public class PlayerGUI extends javax.swing.JFrame {
             }
         });
 
-        lblSplit.setIcon(new javax.swing.ImageIcon("C:\\Users\\yaj\\Desktop\\ICS3U\\Unit 3\\Programs\\PlayerGUI\\src\\split.png")); // NOI18N
+        lblSplit.setIcon(split); // NOI18N
 
         javax.swing.GroupLayout pnlSplitLayout = new javax.swing.GroupLayout(pnlSplit);
         pnlSplit.setLayout(pnlSplitLayout);
@@ -247,7 +248,7 @@ public class PlayerGUI extends javax.swing.JFrame {
             }
         });
 
-        lblHit.setIcon(new javax.swing.ImageIcon("C:\\Users\\yaj\\Desktop\\ICS3U\\Unit 3\\Programs\\PlayerGUI\\src\\hit.png")); // NOI18N
+        lblHit.setIcon(hit); // NOI18N
         lblHit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 lblHitMouseReleased(evt);
@@ -289,9 +290,10 @@ public class PlayerGUI extends javax.swing.JFrame {
         getContentPane().add(pnlTaskBar);
         pnlTaskBar.setBounds(0, 720, 820, 180);
 
-        lblBackGround.setIcon(new javax.swing.ImageIcon("C:\\Users\\yaj\\Desktop\\ICS3U\\Unit 3\\Programs\\PlayerGUI\\table.jpg")); // NOI18N
+        lblBackGround.setIcon(hit); // NOI18N
         getContentPane().add(lblBackGround);
         lblBackGround.setBounds(0, 0, 820, 900);
+        setVisible(true);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
