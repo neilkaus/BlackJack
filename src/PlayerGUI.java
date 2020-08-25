@@ -5,9 +5,9 @@ import javax.swing.JLabel;
 
 /*
  * Programmer:  Andrew Wang (with some verbal assistance from Neil)
- * Date:        24/08/2020
+ * Date:        25/08/2020
  * File:        PlayerGUI
- * Description: a class for the hand of the players in the blackjack game
+ * Description: a class that handles and displays the hand of the players in the blackjack game
  */
 
 public class PlayerGUI extends javax.swing.JFrame {

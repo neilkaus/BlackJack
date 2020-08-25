@@ -513,6 +513,7 @@ public class Main extends javax.swing.JFrame {
             for (int i=0; i<arrayCheckFinish.length; i++) {
                 arrayPlayerGUIs.get(i).getPayout();        
             }
+            gameDeck.endRound();
             btnRoundStart.setEnabled(true); // reenable the Start New Round button
         }   
     }   

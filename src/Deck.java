@@ -137,7 +137,7 @@ public class Deck {
             arrayPlayers.get(playerNum).splitSoftTotal = 0;
             arrayPlayers.get(playerNum).splitHardTotal = 0;
             arrayPlayers.get(playerNum).splitOneAceAs11Total = 0;
-            for (int card:arrayPlayers.get(playerNum).hand) {
+            for (int card:arrayPlayers.get(playerNum).splitHand) {
                 if ( card%13 == 0 && !ace) {
                     arrayPlayers.get(playerNum).splitSoftTotal += 11;
                     arrayPlayers.get(playerNum).splitHardTotal += 1;
@@ -374,7 +374,7 @@ public class Deck {
                 splitHand.appendChild(doc.createTextNode(P.splitHand + ""));
                 splitHardTotal.appendChild(doc.createTextNode(P.splitHardTotal + ""));
                 splitSoftTotal.appendChild(doc.createTextNode(P.splitSoftTotal + ""));
-                splitOneAceAs11Total.appendChild(doc.createTextNode(P.oneAceAs11Total + ""));
+                splitOneAceAs11Total.appendChild(doc.createTextNode(P.splitOneAceAs11Total + ""));
                 winAmount.appendChild(doc.createTextNode(P.winAmount + ""));
                 betAmount.appendChild(doc.createTextNode(P.betAmount + ""));
                 elementPlayer.appendChild(money);
