@@ -390,10 +390,10 @@ public class PlayerGUI extends javax.swing.JFrame {
     }
     private void btnBetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBetActionPerformed
         try{
-            
+            Player player = mainMenu.gameDeck.getPlayer(intPlayerNum);
             // sends the inputed player bet amount to mainMenu.gameDeck
             dblBetAmount = Integer.parseInt(txtBetInput.getText());
-            if(dblBetAmount>0){
+            if(dblBetAmount>0 && dblBetAmount<player.money){
                 mainMenu.gameDeck.bet(intPlayerNum, dblBetAmount);
                 mainMenu.setFinishedBet(intPlayerNum);
                 btnBet.setEnabled(false);
@@ -485,6 +485,8 @@ public class PlayerGUI extends javax.swing.JFrame {
                 if(player.hardTotal>21){
                     setDisableAll();
                     mainMenu.setFinishedPlay(intPlayerNum);
+                    lblNetEarning.setVisible(true);
+                    lblNetEarning.setText("Busted!")
                 }
                 blnDouble = false;
                 lblDouble.setIcon(doubleClicked);
