@@ -1,2 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<game numPlayers="4" startingMoney="100.0"/>
+<game numPlayers="1" startingMoney="1222.0">
+    <round>
+        <player playerNum="0">
+            <money>1234.0</money>
+            <hand>[42, 32]</hand>
+            <hardTotal>11</hardTotal>
+            <softTotal>11</softTotal>
+            <oneAceAs11Total>11</oneAceAs11Total>
+            <splitHand>[]</splitHand>
+            <splitHardTotal>0</splitHardTotal>
+            <splitSoftTotal>0</splitSoftTotal>
+            <splitOneAceAs11Total>0</splitOneAceAs11Total>
+            <winAmount>12.0</winAmount>
+            <betAmount>12.0</betAmount>
+        </player>
+    </round>
+</game>
