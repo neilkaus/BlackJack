@@ -302,6 +302,11 @@ public class PlayerGUI extends javax.swing.JFrame {
     public void startBet(){
         btnBet.setEnabled(true);
         txtBetInput.setEditable(true);
+        blnSplitStatus = false;
+        
+        // resetting the layout
+        pnlCards1.setLayout(new FlowLayout());
+        pnlCards1.removeAll();
     }
     
     public void startPlay(){
@@ -317,6 +322,11 @@ public class PlayerGUI extends javax.swing.JFrame {
         if(player.softTotal == 21){
             setDisableAll();
             mainMenu.setFinishedPlay(intPlayerNum);
+            pnlCards1.setLayout(new FlowLayout());
+            pnlCards1.removeAll();
+            pnlCards2.setLayout(new FlowLayout());
+            pnlCards2.removeAll();
+            blnSplitStatus = false;
         }
         // resetting the layout
             pnlCards1.setLayout(new FlowLayout());
@@ -360,7 +370,6 @@ public class PlayerGUI extends javax.swing.JFrame {
     public void getPayout(){
         Player player = mainMenu.gameDeck.payout(intPlayerNum);
         lblNetEarning.setVisible(true);
-        System.out.println("Player Total :" + player.winAmount);
         // seeing if the player won or lost, which determines whether they win their bet amount or lose it.
         if(player.winAmount > 0){
             lblNetEarning.setText("+$" + Math.abs(player.winAmount));
@@ -395,6 +404,10 @@ public class PlayerGUI extends javax.swing.JFrame {
             pnlCards1.validate();
             pnlCards1.repaint();
             
+            // updating totals
+            txtHardTotal.setText(player.hardTotal + "Points");
+            txtSoftTotal.setText(player.softTotal + "Points");
+            
             // ends the turn and disables all the buttons
             mainMenu.setFinishedPlay(intPlayerNum);
             setDisableAll();
@@ -419,6 +432,10 @@ public class PlayerGUI extends javax.swing.JFrame {
                     }
                     pnlCards1.validate();
                     pnlCards1.repaint();
+                    
+                    // updating totals
+                    txtHardTotal.setText(player.hardTotal + "Points");
+                    txtSoftTotal.setText(player.softTotal + "Points");
                 } else {
                     player = mainMenu.gameDeck.hit(intPlayerNum);
                     
@@ -453,6 +470,10 @@ public class PlayerGUI extends javax.swing.JFrame {
                 lblHit.setIcon(hitClicked);
                 blnSplit = false;
                 lblSplit.setIcon(splitClicked);
+                
+                // updating totals
+                txtHardTotal.setText(player.hardTotal + "Points");
+                txtSoftTotal.setText(player.softTotal + "Points");
             }
         }
     }//GEN-LAST:event_pnlHitMouseClicked
