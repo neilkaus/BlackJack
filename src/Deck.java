@@ -71,8 +71,10 @@ public class Deck {
             P.splitHand = new ArrayList<>();
             P.softTotal = 0;
             P.hardTotal = 0;
+            P.oneAceAs11Total = 0;
             P.splitSoftTotal = 0;
             P.splitHardTotal = 0;
+            P.splitOneAceAs11Total = 0;
             P.betAmount = 0;
             P.winAmount = 0;
         }
@@ -326,14 +328,12 @@ public class Deck {
                 arrayPlayers.get(playerNum).money += arrayPlayers.get(playerNum).betAmount * 2.5;
             } else if(dealerHighestTotal > 21 || handHighestTotal > dealerHighestTotal) {
                 arrayPlayers.get(playerNum).winAmount += arrayPlayers.get(playerNum).betAmount; 
-                arrayPlayers.get(playerNum).betAmount = 0;
                 arrayPlayers.get(playerNum).money += arrayPlayers.get(playerNum).winAmount * 2;
             } else if(handHighestTotal == dealerHighestTotal) {
                 arrayPlayers.get(playerNum).winAmount += 0; 
                 arrayPlayers.get(playerNum).money += arrayPlayers.get(playerNum).betAmount;
             } else {
                 arrayPlayers.get(playerNum).winAmount -= arrayPlayers.get(playerNum).betAmount; 
-                arrayPlayers.get(playerNum).betAmount = 0;
             }
         }        
 
