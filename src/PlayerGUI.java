@@ -358,9 +358,9 @@ public class PlayerGUI extends javax.swing.JFrame {
     
     // tells the player how much they won or lost
     public void getPayout(){
-        Player player = mainMenu.gameDeck.getPlayer(intPlayerNum);
+        Player player = mainMenu.gameDeck.payout(intPlayerNum);
         lblNetEarning.setVisible(true);
-        
+        System.out.println("Player Total :" + player.winAmount);
         // seeing if the player won or lost, which determines whether they win their bet amount or lose it.
         if(player.winAmount > 0){
             lblNetEarning.setText("+$" + Math.abs(player.winAmount));
