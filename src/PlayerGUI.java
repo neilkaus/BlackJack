@@ -510,6 +510,10 @@ public class PlayerGUI extends javax.swing.JFrame {
             pnlCards1.add(card);
             pnlCards1.validate();
             pnlCards1.repaint();
+            
+            //disabling split button
+            blnSplit = false;
+            lblSplit.setIcon(splitClicked);
         }
     }//GEN-LAST:event_pnlSplitMouseClicked
 
