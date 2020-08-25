@@ -334,6 +334,8 @@ public class PlayerGUI extends javax.swing.JFrame {
             pnlCards2.setLayout(new FlowLayout());
             pnlCards2.removeAll();
             blnSplitStatus = false;
+            
+            lblNetEarnings.setText("Blackjack!");
         }
         // resetting the layout
             pnlCards1.setLayout(new FlowLayout());
