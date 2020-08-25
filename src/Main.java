@@ -332,14 +332,19 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
-       int numOfPlayers = Integer.parseInt(txtPlayerAmount.getText());
+       try {
+            int numOfPlayers = Integer.parseInt(txtPlayerAmount.getText());
        
-       if (numOfPlayers > 0 && numOfPlayers < 5) { // Only up to 3 players can join a match
-            gameDeck = new Deck(numOfPlayers, 1000); // install Deck and starting money amount 
-            for (int i=0; i<numOfPlayers; i++) { // set the amount of "PlayerGUI" and then add them into the "arrayPlayerGUIs"
-                PlayerGUI pGUI = new PlayerGUI(i, this);
-                arrayPlayerGUIs.add(pGUI);
+            if (numOfPlayers > 0 && numOfPlayers < 5) { // Only up to 3 players can join a match
+                gameDeck = new Deck(numOfPlayers, 1000); // install Deck and starting money amount 
+                for (int i=0; i<numOfPlayers; i++) { // set the amount of "PlayerGUI" and then add them into the "arrayPlayerGUIs"
+                    PlayerGUI pGUI = new PlayerGUI(i, this);
+                    arrayPlayerGUIs.add(pGUI);
+                }
             }
+        }
+        catch(Exception e) {
+            System.out.println("Incorrect Input");
         }
        
         CardLayout card = (CardLayout)mainPanel.getLayout(); // src: https://stackoverflow.com/questions/21898425/how-to-use-cardlayout-with-netbeans-gui-builder/
