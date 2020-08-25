@@ -8,7 +8,10 @@ import javax.swing.*;
 import java.util.*;
 /**
  *
- * @author etsan
+ * @author Ethan Tsang
+ * @date 2020-08-25
+ * @name Main
+ * @description Main menu for Blackjack Program, as well as the Dealer's Hand GUI and Game Over GUI.
  */
 public class Main extends javax.swing.JFrame {
     
@@ -441,9 +444,9 @@ public class Main extends javax.swing.JFrame {
         card.show(mainPanel, "cardP3");
         
         String temp = "";
-        Double [] finalMoneyList = new Double [4];
+        Double [] finalMoneyList = new Double [4]; // Array will contain the the final amount of money for each player
         for (int i=0; i < arrayPlayerGUIs.size(); i++) {
-            finalMoneyList [i] = gameDeck.getPlayer(i).money;
+            finalMoneyList [i] = gameDeck.getPlayer(i).money; 
             
             temp += "Player " +(i+1)+ " final score: " + " $ "+Double.toString(finalMoneyList [i] )+ "\n";   
         }
