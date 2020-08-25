@@ -304,9 +304,14 @@ public class PlayerGUI extends javax.swing.JFrame {
         txtBetInput.setEditable(true);
         blnSplitStatus = false;
         
+        setDisableAll();
+        
         // resetting the layout
         pnlCards1.setLayout(new FlowLayout());
         pnlCards1.removeAll();
+        pnlCards2.setLayout(new FlowLayout());
+        pnlCards2.removeAll();
+
     }
     
     public void startPlay(){
