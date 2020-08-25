@@ -455,15 +455,19 @@ public class Main extends javax.swing.JFrame {
         CardLayout card = (CardLayout)mainPanel.getLayout(); // src: https://stackoverflow.com/questions/21898425/how-to-use-cardlayout-with-netbeans-gui-builder/
         card.show(mainPanel, "cardP3");
         
+        
         Double [] finalMoneyList = new Double [4];
         for (int i=0; i < arrayPlayerGUIs.size(); i++) {
             finalMoneyList [i] = gameDeck.getPlayer(i).money;
+            
         }
-        
+
         txaFinal1.setText("Player 1 final score!\n" + "$ "+Double.toString(finalMoneyList [0]));
         txaFinal2.setText("Player 2 final score!\n" + "$ "+Double.toString(finalMoneyList [1]));
         txaFinal3.setText("Player 3 final score!\n" + "$ "+Double.toString(finalMoneyList [2]));
         txaFinal4.setText("Player 4 final score!\n" + "$ "+Double.toString(finalMoneyList [3]));
+                
+        
     }//GEN-LAST:event_btnEndGameActionPerformed
  
     public void setFinishedBet(int playerNum) { // src: Neil gave me this code    
