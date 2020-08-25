@@ -176,6 +176,8 @@ public class Deck {
     public Player split(int playerNum) {
         arrayPlayers.get(playerNum).splitHand.add(arrayPlayers.get(playerNum).hand.get(0));
         arrayPlayers.get(playerNum).hand.remove(0);
+        arrayPlayers.get(playerNum).money -= arrayPlayers.get(playerNum).betAmount;
+        arrayPlayers.get(playerNum).betAmount *= 2;
         
         playerHandTotal(playerNum);
 
@@ -274,7 +276,7 @@ public class Deck {
             } else {
                 arrayPlayers.get(playerNum).winAmount -= arrayPlayers.get(playerNum).betAmount/2; 
             }
-
+            System.out.println(" win amount " + arrayPlayers.get(playerNum).winAmount);
         } else {
             if(handHighestTotal > 21 ) {
                 arrayPlayers.get(playerNum).winAmount -= arrayPlayers.get(playerNum).betAmount;
