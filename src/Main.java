@@ -109,22 +109,20 @@ public class Main extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txtStartMoney = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         cardP2 = new javax.swing.JPanel();
         Jpanel1 = new javax.swing.JPanel();
         btnRoundStart = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         btnEndGame = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         cardP3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txaFinal1 = new javax.swing.JTextArea();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txaFinal2 = new javax.swing.JTextArea();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        txaFinal3 = new javax.swing.JTextArea();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        txaFinal4 = new javax.swing.JTextArea();
         btnExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -157,6 +155,10 @@ public class Main extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel9.setText("Hover over buttons and text boxes for tooltips!");
 
+        jLabel10.setText("Set the amount of money to start with:");
+
+        jLabel11.setText("Set the amount of players (up to 4):");
+
         javax.swing.GroupLayout cardP1Layout = new javax.swing.GroupLayout(cardP1);
         cardP1.setLayout(cardP1Layout);
         cardP1Layout.setHorizontalGroup(
@@ -175,16 +177,16 @@ public class Main extends javax.swing.JFrame {
                                     .addComponent(jLabel7))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(cardP1Layout.createSequentialGroup()
-                        .addGap(253, 253, 253)
+                        .addGap(236, 236, 236)
                         .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
                         .addGroup(cardP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(cardP1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(cardP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(txtStartMoney, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtPlayerAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(cardP1Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(txtStartMoney, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 264, Short.MAX_VALUE)))
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel11))
+                        .addGap(0, 256, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cardP1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -194,17 +196,17 @@ public class Main extends javax.swing.JFrame {
         cardP1Layout.setVerticalGroup(
             cardP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cardP1Layout.createSequentialGroup()
-                .addGroup(cardP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(cardP1Layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(txtPlayerAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtStartMoney, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                        .addGap(26, 26, 26))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cardP1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnStart)
-                        .addGap(52, 52, 52)))
+                .addGap(34, 34, 34)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtPlayerAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addGroup(cardP1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnStart)
+                    .addComponent(jLabel10))
+                .addGap(4, 4, 4)
+                .addComponent(txtStartMoney, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel9)
@@ -243,7 +245,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("MingLiU_HKSCS-ExtB", 1, 48)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Georgia", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 204, 51));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Dealer's Hand");
@@ -255,6 +257,10 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jLabel12.setText("Start a new round before betting.");
+
+        jLabel13.setText("End game to see final scores.");
+
         javax.swing.GroupLayout cardP2Layout = new javax.swing.GroupLayout(cardP2);
         cardP2.setLayout(cardP2Layout);
         cardP2Layout.setHorizontalGroup(
@@ -262,14 +268,16 @@ public class Main extends javax.swing.JFrame {
             .addGroup(cardP2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(cardP2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Jpanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(cardP2Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(cardP2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnEndGame)
-                            .addComponent(btnRoundStart))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 822, Short.MAX_VALUE))
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel13))
+                    .addComponent(Jpanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 834, Short.MAX_VALUE)
+                    .addGroup(cardP2Layout.createSequentialGroup()
+                        .addComponent(btnRoundStart)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEndGame)))
                 .addContainerGap())
         );
         cardP2Layout.setVerticalGroup(
@@ -277,10 +285,14 @@ public class Main extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cardP2Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-                .addGap(26, 26, 26)
-                .addComponent(btnRoundStart)
-                .addGap(34, 34, 34)
-                .addComponent(btnEndGame)
+                .addGap(51, 51, 51)
+                .addGroup(cardP2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel13))
+                .addGap(18, 18, 18)
+                .addGroup(cardP2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEndGame)
+                    .addComponent(btnRoundStart))
                 .addGap(18, 18, 18)
                 .addComponent(Jpanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -302,60 +314,33 @@ public class Main extends javax.swing.JFrame {
         txaFinal1.setRows(5);
         jScrollPane1.setViewportView(txaFinal1);
 
-        txaFinal2.setColumns(20);
-        txaFinal2.setRows(5);
-        jScrollPane2.setViewportView(txaFinal2);
-
-        txaFinal3.setColumns(20);
-        txaFinal3.setRows(5);
-        jScrollPane3.setViewportView(txaFinal3);
-
-        txaFinal4.setColumns(20);
-        txaFinal4.setRows(5);
-        jScrollPane4.setViewportView(txaFinal4);
-
         javax.swing.GroupLayout cardP3Layout = new javax.swing.GroupLayout(cardP3);
         cardP3.setLayout(cardP3Layout);
         cardP3Layout.setHorizontalGroup(
             cardP3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cardP3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(cardP3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 822, Short.MAX_VALUE)
-                    .addGroup(cardP3Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(53, 53, 53)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 834, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(cardP3Layout.createSequentialGroup()
+                .addGap(388, 388, 388)
+                .addComponent(jLabel8)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cardP3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel8)
-                .addGap(380, 380, 380))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(260, 260, 260))
         );
         cardP3Layout.setVerticalGroup(
             cardP3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cardP3Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(cardP3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(cardP3Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGroup(cardP3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cardP3Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(cardP3Layout.createSequentialGroup()
-                                .addGap(110, 110, 110)
-                                .addGroup(cardP3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(205, Short.MAX_VALUE))
+                .addGap(6, 6, 6)
+                .addComponent(jLabel8)
+                .addGap(36, 36, 36)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         mainPanel.add(cardP3, "cardP3");
@@ -455,19 +440,15 @@ public class Main extends javax.swing.JFrame {
         CardLayout card = (CardLayout)mainPanel.getLayout(); // src: https://stackoverflow.com/questions/21898425/how-to-use-cardlayout-with-netbeans-gui-builder/
         card.show(mainPanel, "cardP3");
         
-        
+        String temp = "";
         Double [] finalMoneyList = new Double [4];
         for (int i=0; i < arrayPlayerGUIs.size(); i++) {
             finalMoneyList [i] = gameDeck.getPlayer(i).money;
             
+            temp += "Player " +(i+1)+ " final score: " + " $ "+Double.toString(finalMoneyList [i] )+ "\n";   
         }
-
-        txaFinal1.setText("Player 1 final score!\n" + "$ "+Double.toString(finalMoneyList [0]));
-        txaFinal2.setText("Player 2 final score!\n" + "$ "+Double.toString(finalMoneyList [1]));
-        txaFinal3.setText("Player 3 final score!\n" + "$ "+Double.toString(finalMoneyList [2]));
-        txaFinal4.setText("Player 4 final score!\n" + "$ "+Double.toString(finalMoneyList [3]));
-                
-        
+        txaFinal1.setText(temp);
+ 
     }//GEN-LAST:event_btnEndGameActionPerformed
  
     public void setFinishedBet(int playerNum) { // src: Neil gave me this code    
@@ -529,7 +510,6 @@ public class Main extends javax.swing.JFrame {
             for (int i=0; i<arrayCheckFinish.length; i++) {
                 arrayPlayerGUIs.get(i).getPayout();        
             }
-            gameDeck.endRound();
             btnRoundStart.setEnabled(true); // reenable the Start New Round button
         }   
     }   
@@ -580,6 +560,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel cardP2;
     private javax.swing.JPanel cardP3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -589,14 +573,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JTextArea txaFinal1;
-    private javax.swing.JTextArea txaFinal2;
-    private javax.swing.JTextArea txaFinal3;
-    private javax.swing.JTextArea txaFinal4;
     private javax.swing.JTextField txtPlayerAmount;
     private javax.swing.JTextField txtStartMoney;
     // End of variables declaration//GEN-END:variables
