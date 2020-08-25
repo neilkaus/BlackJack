@@ -1,4 +1,20 @@
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.xml.sax.SAXException;
+
 
 public class Deck {
 
@@ -8,6 +24,28 @@ public class Deck {
     private Dealer mainDealer;
 
     public Deck(int numPlayers, double startingMoney) {
+        try {
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document doc = db.newDocument();
+            Element game = doc.createElement("game");
+            game.setAttribute("numPlayers", numPlayers + "");
+            game.setAttribute("startingMoney", startingMoney + "");
+            doc.appendChild(game);
+
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+            DOMSource source = new DOMSource(doc);
+            StreamResult result =  new StreamResult(new File("BlackJackLog.xml"));
+            transformer.transform(source, result);
+
+        } catch (ParserConfigurationException ex) {
+        } catch (TransformerConfigurationException ex) {
+        } catch (TransformerException ex) {
+        }
+
         for(int i = 0; i < numPlayers; i++) {
             arrayPlayers.add(new Player(startingMoney));
         }
@@ -301,5 +339,67 @@ public class Deck {
 
     public Player getPlayer(int playerNum) {
         return arrayPlayers.get(playerNum);
+    }
+    public void endRound() {
+         try {
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document doc = db.parse(new File("BlackJackLog.xml"));
+            doc.getDocumentElement().normalize();
+            Element game = doc.getDocumentElement();
+            Element round = doc.createElement("round");
+            
+            for (Player P:arrayPlayers) {
+                Element elementPlayer = doc.createElement("player");
+                elementPlayer.setAttribute("playerNum", arrayPlayers.indexOf(P) + "");
+                Element money = doc.createElement("money");
+                Element hand = doc.createElement("hand");
+                Element hardTotal = doc.createElement("hardTotal");
+                Element softTotal = doc.createElement("softTotal");
+                Element oneAceAs11Total = doc.createElement("oneAceAs11Total");
+                Element splitHand = doc.createElement("splitHand");
+                Element splitHardTotal = doc.createElement("splitHardTotal");
+                Element splitSoftTotal = doc.createElement("splitSoftTotal");
+                Element splitOneAceAs11Total = doc.createElement("splitOneAceAs11Total");
+                Element winAmount = doc.createElement("winAmount");
+                Element betAmount = doc.createElement("betAmount");
+                money.appendChild(doc.createTextNode(P.money + ""));
+                hand.appendChild(doc.createTextNode(P.hand + ""));
+                hardTotal.appendChild(doc.createTextNode(P.hardTotal + ""));
+                softTotal.appendChild(doc.createTextNode(P.softTotal + ""));
+                oneAceAs11Total.appendChild(doc.createTextNode(P.oneAceAs11Total + ""));
+                splitHand.appendChild(doc.createTextNode(P.splitHand + ""));
+                splitHardTotal.appendChild(doc.createTextNode(P.splitHardTotal + ""));
+                splitSoftTotal.appendChild(doc.createTextNode(P.splitSoftTotal + ""));
+                splitOneAceAs11Total.appendChild(doc.createTextNode(P.oneAceAs11Total + ""));
+                winAmount.appendChild(doc.createTextNode(P.winAmount + ""));
+                betAmount.appendChild(doc.createTextNode(P.betAmount + ""));
+                elementPlayer.appendChild(money);
+                elementPlayer.appendChild(hand);
+                elementPlayer.appendChild(hardTotal);
+                elementPlayer.appendChild(softTotal);
+                elementPlayer.appendChild(oneAceAs11Total);
+                elementPlayer.appendChild(splitHand);
+                elementPlayer.appendChild(splitHardTotal);
+                elementPlayer.appendChild(splitSoftTotal);
+                elementPlayer.appendChild(splitOneAceAs11Total);
+                elementPlayer.appendChild(winAmount);
+                elementPlayer.appendChild(betAmount);
+                round.appendChild(elementPlayer);
+            }
+            
+            game.appendChild(round);
+            
+            //write the content into xml file
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+            DOMSource source = new DOMSource(doc);
+            StreamResult result =  new StreamResult(new File("BlackJackLog.xml"));
+            transformer.transform(source, result);
+        } catch (ParserConfigurationException ex) {
+        } catch (SAXException | IOException | TransformerException ex) {
+        }
     }
 }
