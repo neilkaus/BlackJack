@@ -335,7 +335,7 @@ public class PlayerGUI extends javax.swing.JFrame {
             pnlCards2.removeAll();
             blnSplitStatus = false;
             
-            lblNetEarnings.setText("Blackjack!");
+            lblNetEarning.setText("Blackjack!");
         }
         // resetting the layout
             pnlCards1.setLayout(new FlowLayout());
@@ -399,6 +399,8 @@ public class PlayerGUI extends javax.swing.JFrame {
                 btnBet.setEnabled(false);
             } else {
                 txtBetInput.setText("Invalid bet, try again!");
+           
+        }
             } catch (Exception e) {
             txtBetInput.setText("Error");
             }
