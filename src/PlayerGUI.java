@@ -309,6 +309,9 @@ public class PlayerGUI extends javax.swing.JFrame {
         pnlCards2.removeAll();
         pnlCards1.validate();
         pnlCards1.repaint();
+        txtHardTotal.setText("");
+        txtSoftTotal.setText("");
+        lblNetEarning.setText("");
     }
     
     public void startPlay(){
@@ -374,11 +377,11 @@ public class PlayerGUI extends javax.swing.JFrame {
         lblNetEarning.setVisible(true);
         // seeing if the player won or lost, which determines whether they win their bet amount or lose it.
         if(player.winAmount > 0){
-            lblNetEarning.setText("+$" + Math.abs(player.winAmount));
+            lblNetEarning.setText("+$" + Math.abs(player.winAmount) + " you won!");
         } else if (player.winAmount == 0) {
-            lblNetEarning.setText("$0");
+            lblNetEarning.setText("$0 You tied!");
         } else {
-            lblNetEarning.setText("-$" + Math.abs(player.winAmount));
+            lblNetEarning.setText("-$" + Math.abs(player.winAmount) + " You lost!");
         }
     }
     private void btnBetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBetActionPerformed

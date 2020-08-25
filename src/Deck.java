@@ -80,7 +80,7 @@ public class Deck {
                 arrayPlayers.get(playerNum).softTotal += 11;
                 arrayPlayers.get(playerNum).hardTotal += 1;
                 arrayPlayers.get(playerNum).oneAceAs11Total += 1;
-            } else if (card%13 < 10) {
+            } else if ((card%13) + 1 < 10) {
                 arrayPlayers.get(playerNum).softTotal += (card%13) + 1;
                 arrayPlayers.get(playerNum).hardTotal += (card%13) + 1;
                 arrayPlayers.get(playerNum).oneAceAs11Total += (card%13) + 1;
@@ -105,7 +105,7 @@ public class Deck {
                     arrayPlayers.get(playerNum).splitSoftTotal += 11;
                     arrayPlayers.get(playerNum).splitHardTotal += 1;
                     arrayPlayers.get(playerNum).splitOneAceAs11Total += 1;
-                } else if (card%13 < 10) {
+                } else if ((card%13) +1 < 10) {
                     arrayPlayers.get(playerNum).splitSoftTotal += (card%13) + 1;
                     arrayPlayers.get(playerNum).splitHardTotal += (card%13)+ 1;
                     arrayPlayers.get(playerNum).splitOneAceAs11Total += (card%13) + 1;
@@ -132,7 +132,7 @@ public class Deck {
                 mainDealer.softTotal += 11;
                 mainDealer.hardTotal += 1;
                 mainDealer.oneAceAs11Total += 1;
-            } else if (card%13 < 10) {
+            } else if ((card%13) + 1 < 10) {
                 mainDealer.softTotal += (card%13) + 1;
                 mainDealer.hardTotal += (card%13) + 1;
                 mainDealer.oneAceAs11Total += (card%13) + 1;
