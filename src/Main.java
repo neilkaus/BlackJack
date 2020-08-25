@@ -341,14 +341,20 @@ public class Main extends javax.swing.JFrame {
                     PlayerGUI pGUI = new PlayerGUI(i, this);
                     arrayPlayerGUIs.add(pGUI);
                 }
+                CardLayout card = (CardLayout)mainPanel.getLayout(); // src: https://stackoverflow.com/questions/21898425/how-to-use-cardlayout-with-netbeans-gui-builder/
+                card.show(mainPanel, "cardP2");
+            }
+            else {
+                System.out.println("Too Many Players");
+                CardLayout card = (CardLayout)mainPanel.getLayout(); // src: https://stackoverflow.com/questions/21898425/how-to-use-cardlayout-with-netbeans-gui-builder/
+                card.show(mainPanel, "cardP1");
             }
         }
         catch(Exception e) {
             System.out.println("Incorrect Input");
+            CardLayout card = (CardLayout)mainPanel.getLayout(); // src: https://stackoverflow.com/questions/21898425/how-to-use-cardlayout-with-netbeans-gui-builder/
+            card.show(mainPanel, "cardP1");
         }
-       
-        CardLayout card = (CardLayout)mainPanel.getLayout(); // src: https://stackoverflow.com/questions/21898425/how-to-use-cardlayout-with-netbeans-gui-builder/
-        card.show(mainPanel, "cardP2");     
     }//GEN-LAST:event_btnStartActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
