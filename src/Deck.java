@@ -107,6 +107,7 @@ public class Deck {
     private void playerHandTotal(int playerNum) {
         arrayPlayers.get(playerNum).softTotal = 0;
         arrayPlayers.get(playerNum).hardTotal = 0;
+        arrayPlayers.get(playerNum).oneAceAs11Total = 0;
         boolean ace = false;
         for (int card:arrayPlayers.get(playerNum).hand) {
             if ( card%13 == 0 && !ace) {
@@ -133,6 +134,7 @@ public class Deck {
             ace = false;
             arrayPlayers.get(playerNum).splitSoftTotal = 0;
             arrayPlayers.get(playerNum).splitHardTotal = 0;
+            arrayPlayers.get(playerNum).splitOneAceAs11Total = 0;
             for (int card:arrayPlayers.get(playerNum).hand) {
                 if ( card%13 == 0 && !ace) {
                     arrayPlayers.get(playerNum).splitSoftTotal += 11;
@@ -159,6 +161,7 @@ public class Deck {
     private void dealerHandTotal() {
         mainDealer.softTotal = 0;
         mainDealer.hardTotal = 0;
+        mainDealer.oneAceAs11Total = 0;
         boolean ace = false;
         for (int card:mainDealer.hand) {
             if ( card%13 == 0 && !ace) {
