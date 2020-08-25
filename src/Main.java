@@ -389,16 +389,13 @@ public class Main extends javax.swing.JFrame {
  
     public void setFinishedBet(int playerNum) { // src: Neil gave me this code    
         arrayCheckFinish[playerNum] = true;
-        System.out.println(gameDeck.getPlayer(0).hardTotal + "");
         boolean finished = true; 
         for(int i=0; i < arrayCheckFinish.length; i++) {
-            System.out.println(i);
             if (!arrayCheckFinish[i]) {
                 finished = false;
                 break;
             }
         }
-        System.out.print(finished + "");
         if (finished) {
             startPlayRound();
         }     
@@ -409,7 +406,6 @@ public class Main extends javax.swing.JFrame {
         Jpanel1.setLayout(new FlowLayout());
         
         Dealer dealer = gameDeck.dealDealer();
-        System.out.print(dealer.hand.get(0) + "");
         JLabel cardPic = new JLabel();                       // src: https://stackoverflow.com/questions/14030124/how-to-dynamically-add-jlabels-to-jpanel
         cardPic.setIcon(arrayCardIcons[dealer.hand.get(0)]); // src: Also help from Neil
         Jpanel1.add(cardPic);                                       
