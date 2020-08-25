@@ -335,7 +335,7 @@ public class PlayerGUI extends javax.swing.JFrame {
             pnlCards2.removeAll();
             blnSplitStatus = false;
             
-            lblNetEarnings.setText("Blackjack!");
+            //lblNetEarnings.setText("Blackjack!");
         }
         // resetting the layout
             pnlCards1.setLayout(new FlowLayout());
@@ -437,11 +437,12 @@ public class PlayerGUI extends javax.swing.JFrame {
             if(blnSplitStatus){
                 if(!player.playSplitHand){//checks if the player has standed or busted the first hand
                     player = mainMenu.gameDeck.hit(intPlayerNum);
-                    pnlCards1.setLayout(new FlowLayout());// src: https://stackoverflow.com/questions/14030124/how-to-dynamically-add-jlabels-to-jpanel
+                    // src: https://stackoverflow.com/questions/14030124/how-to-dynamically-add-jlabels-to-jpanel
                     pnlCards1.removeAll();
+                    pnlCards1.setLayout(new FlowLayout());
                     for(int i = 0; i<player.hand.size(); i++){
                         JLabel card = new JLabel("");
-                        card.setIcon(mainMenu.arrayCardIcons[player.splitHand.get(i)]);
+                        card.setIcon(mainMenu.arrayCardIcons[player.hand.get(i)]);
                         pnlCards1.add(card);
                     }
                     pnlCards1.validate();
@@ -454,11 +455,12 @@ public class PlayerGUI extends javax.swing.JFrame {
                     player = mainMenu.gameDeck.hit(intPlayerNum);
                     
                     //reseting the layout on the second hand
-                    pnlCards2.setLayout(new FlowLayout());// src: https://stackoverflow.com/questions/14030124/how-to-dynamically-add-jlabels-to-jpanel
+                    // src: https://stackoverflow.com/questions/14030124/how-to-dynamically-add-jlabels-to-jpanel
                     pnlCards2.removeAll();
-                    for(int i = 0; i<player.hand.size(); i++){
+                    pnlCards2.setLayout(new FlowLayout());
+                    for(int i = 0; i<player.splitHand.size(); i++){
                         JLabel card = new JLabel("");
-                        card.setIcon(mainMenu.arrayCardIcons[player.hand.get(i)]);
+                        card.setIcon(mainMenu.arrayCardIcons[player.splitHand.get(i)]);
                         pnlCards2.add(card);
                     }
                     pnlCards2.validate();
@@ -503,13 +505,13 @@ public class PlayerGUI extends javax.swing.JFrame {
             pnlCards2.repaint();
             
             // resets hand 1
-            pnlCards1.setLayout(new FlowLayout());
+
             pnlCards1.removeAll();
-            pnlCards1.validate();
-            pnlCards1.repaint();
+            pnlCards1.setLayout(new FlowLayout());
             
-            card.setIcon(mainMenu.arrayCardIcons[player.hand.get(0)]);
-            pnlCards1.add(card);
+            JLabel card2 = new JLabel("");
+            card2.setIcon(mainMenu.arrayCardIcons[player.hand.get(0)]);
+            pnlCards1.add(card2);
             pnlCards1.validate();
             pnlCards1.repaint();
             
