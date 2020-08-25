@@ -2,7 +2,6 @@
 import java.awt.FlowLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import mainMenu.*;
 
 /*
  * Programmer:  Andrew Wang (with some verbal assistance from Neil)
@@ -15,7 +14,7 @@ public class PlayerGUI extends javax.swing.JFrame {
 
     double dblBetAmount;
     Boolean blnSplitStatus = false;//whether the player has split yet
-    private int intPlayerNum;
+    private final int intPlayerNum;
     
     //importing the image icons for panel-buttons
     ImageIcon doubleClicked = new ImageIcon("double.png");
@@ -56,13 +55,7 @@ public class PlayerGUI extends javax.swing.JFrame {
         
         intPlayerNum = playerNum;// the number assigned by the main to this player
         initComponents();
-        /*
-        // setting all buttons to 'disabled'
-        btnStand.setEnabled(false);
-        btnSplit.setEnabled(false);
-        btnHit.setEnabled(false);
-        btnDouble.setEnabled(false);
-        */
+
         lblNetEarning.setVisible(false);
         
         //tool tips for each of the buttons
@@ -349,9 +342,9 @@ public class PlayerGUI extends javax.swing.JFrame {
         lblNetEarning.setVisible(true);
         
         // seeing if the player won or lost, which determines whether they win their bet amount or lose it.
-        if(player.win > 0){
+        if(player.winAmount > 0){
             lblNetEarning.setText("+$" + Math.abs(player.winAmount));
-        } else if (player.win == 0) {
+        } else if (player.winAmount == 0) {
             lblNetEarning.setText("$0");
         } else {
             lblNetEarning.setText("-$" + Math.abs(player.winAmount));

@@ -5,14 +5,13 @@
  */
 import java.awt.*;
 import javax.swing.*;
-import java.awt.event.*;
 import java.util.*;
 /**
  *
  * @author etsan
  */
 public class Main extends javax.swing.JFrame {
-
+    static Main mainMenu;
     ImageIcon[] arrayCardIcons = new ImageIcon[52]; // "arrayCardIcons" array contains the playing card .jpg images
     
     ArrayList <PlayerGUI> arrayPlayerGUIs = new ArrayList <>(); 
@@ -30,7 +29,7 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         
         btnRoundStart.setToolTipText("Push to start a new round of the game."); // src: https://docs.oracle.com/javase/tutorial/uiswing/components/tooltip.html
-        txtDealerPoints1.setToolTipText("This text box displays the total amount of points the dealer has.");
+        //txtDealerPoints1.setToolTipText("This text box displays the total amount of points the dealer has.");
         btnStart.setToolTipText("Enter the number of players, and then push to start game."); // src: https://docs.oracle.com/javase/tutorial/uiswing/components/tooltip.html
         txtPlayerAmount.setToolTipText("Enter the number of players in this text box.");
         btnExit.setToolTipText("Close program."); // src: https://docs.oracle.com/javase/tutorial/uiswing/components/tooltip.html
@@ -339,7 +338,7 @@ public class Main extends javax.swing.JFrame {
        int numOfPlayers = Integer.parseInt(txtPlayerAmount.getText());
 
         for (int i=0; i<numOfPlayers; i++) {
-            PlayerGUI pGUI = new PlayerGUI(i);
+            PlayerGUI pGUI = new PlayerGUI(gameDeck, i, mainMenu);
             arrayPlayerGUIs.add(pGUI);
         }
         
@@ -458,11 +457,8 @@ public class Main extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Main().setVisible(true);
-            }
-        });
+        mainMenu = new Main();
+        mainMenu.setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
