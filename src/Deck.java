@@ -272,7 +272,6 @@ public class Deck {
                 dealerHandTotal();
             }
         }
-        System.out.println("dealer soft : " + mainDealer.softTotal + " dealer hard " + mainDealer.hardTotal + " one ace " + mainDealer.oneAceAs11Total);
         return mainDealer;
     }
 
@@ -337,7 +336,6 @@ public class Deck {
             } else {
                 arrayPlayers.get(playerNum).winAmount -= arrayPlayers.get(playerNum).betAmount/2; 
             }
-            System.out.println(" win amount " + arrayPlayers.get(playerNum).winAmount);
         } else {
             //check for payout if no split
             if(handHighestTotal > 21 ) {
