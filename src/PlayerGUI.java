@@ -25,7 +25,7 @@ public class PlayerGUI extends javax.swing.JFrame {
     ImageIcon split = new ImageIcon("split.png");
     ImageIcon standClicked = new ImageIcon("standClicked.png");
     ImageIcon stand = new ImageIcon("stand.png");
-    ImageIcon background = new ImageIcon("../table.jpg");
+    ImageIcon background = new ImageIcon("table.jpg");
     
     //whether the stand double hit split panel-buttons are active
     boolean blnStand;
